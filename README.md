@@ -15,9 +15,9 @@ Robust polynomial regression using LMedS.
 ## Usage
 
 ```js
-import library from 'ml-regression-robust-polynomial';
+import RobustPolynomialRegression from 'ml-regression-robust-polynomial';
 
-const result = library(args);
+const result = RobustPolynomialRegression(args);
 // result is ...
 ```
 

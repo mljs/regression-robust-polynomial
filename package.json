@@ -39,5 +39,9 @@
     "jest": "^20.0.4",
     "npm-run-all": "^4.0.2",
     "rollup": "^0.43.0"
+  },
+  "dependencies": {
+    "ml-matrix": "^3.0.0",
+    "ml-regression-base": "^1.2.0"
   }
 }
