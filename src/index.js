@@ -111,9 +111,9 @@ function robustPolynomial(regression, x, y, degree) {
         }
     }
 
-    regression.coefficients = min.coefficients;
-    regression.powers = powers;
     regression.degree = degree;
+    regression.powers = powers;
+    regression.coefficients = min.coefficients;
 }
 
 /**
