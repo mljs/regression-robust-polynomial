@@ -118,10 +118,10 @@ function robustPolynomial(regression, x, y, degree) {
 
 /**
  * @ignore
- * @param x
- * @param y
- * @param degree
- * @return {Array}
+ * @param {Array<number>} x
+ * @param {Array<number>} y
+ * @param {number} degree
+ * @return {Array<{x:number,y:number}>}
  */
 function getRandomTuples(x, y, degree) {
     var len = Math.floor(x.length / degree);
@@ -159,9 +159,9 @@ function getRandomTuples(x, y, degree) {
 
 /**
  * @ignore
- * @param tuple
- * @param powers
- * @return {Array}
+ * @param {{x:number,y:number}} tuple
+ * @param {Array<number>} powers
+ * @return {Array<number>}
  */
 function calcCoefficients(tuple, powers) {
     var X = tuple.slice();
