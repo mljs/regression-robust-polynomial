@@ -8,6 +8,8 @@
 
 Robust polynomial regression using LMedS.
 
+This code is based on the implementation of [this paper](https://doi.org/10.1007/BF00127126).
+
 ## Installation
 
 `$ npm install --save ml-regression-robust-polynomial`
@@ -17,8 +19,19 @@ Robust polynomial regression using LMedS.
 ```js
 import RobustPolynomialRegression from 'ml-regression-robust-polynomial';
 
-const result = RobustPolynomialRegression(args);
-// result is ...
+var size = 30;
+var x = new Array(size);
+var y = new Array(size);
+for (var i = 0; i < size; i++) {
+    x[i] = i;
+    y[i] = 2 * i * i + 4 * i + 5;
+}
+y[4] = y[4] * 100;
+y[10] = y[10] * -100;
+
+var regression = new RobustPolynomialRegression(x, y, 3);
+
+regression.predict(3) === 35;
 ```
 
 ## [API Documentation](https://mljs.github.io/regression-robust-polynomial/)
