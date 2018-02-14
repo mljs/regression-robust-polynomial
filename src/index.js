@@ -1,6 +1,12 @@
 import BaseRegression, { checkArrayLength, maybeToPrecision } from 'ml-regression-base';
 import { solve } from 'ml-matrix';
 
+/**
+ * @class RobustPolynomialRegression
+ * @param {Array<number>} x
+ * @param {Array<number>} y
+ * @param {number} degree - polynomial degree
+ */
 export default class RobustPolynomialRegression extends BaseRegression {
   constructor(x, y, degree) {
     super();
@@ -27,10 +33,20 @@ export default class RobustPolynomialRegression extends BaseRegression {
     return predict(x, this.powers, this.coefficients);
   }
 
+  /**
+   * Display the formula
+   * @param {number} precision - precision for the numbers
+   * @return {string}
+   */
   toString(precision) {
     return this._toFormula(precision, false);
   }
 
+  /**
+   * Display the formula in LaTeX format
+   * @param {number} precision - precision for the numbers
+   * @return {string}
+   */
   toLaTeX(precision) {
     return this._toFormula(precision, true);
   }
@@ -84,14 +100,11 @@ export default class RobustPolynomialRegression extends BaseRegression {
 }
 
 function robustPolynomial(regression, x, y, degree) {
-  let powers = new Array(degree);
-  for (let k = 0; k < degree; k++) {
-    powers[k] = k;
-  }
+  let powers = Array(degree).map((_, index) => index);
 
   const tuples = getRandomTuples(x, y, degree);
-  var min;
 
+  var min;
   for (var i = 0; i < tuples.length; i++) {
     var tuple = tuples[i];
     var coefficients = calcCoefficients(tuple, powers);
@@ -190,9 +203,5 @@ function residualsMedian(residuals) {
 
   var l = residuals.length;
   var half = Math.floor(l / 2);
-  if (l % 2 === 0) {
-    return residuals[half - 1];
-  } else {
-    return residuals[half];
-  }
+  return (l % 2 === 0) ? residuals[half - 1] : residuals[half];
 }
