@@ -1,4 +1,7 @@
-import BaseRegression, { checkArrayLength, maybeToPrecision } from 'ml-regression-base';
+import BaseRegression, {
+  checkArrayLength,
+  maybeToPrecision
+} from 'ml-regression-base';
 import { solve } from 'ml-matrix';
 
 /**
@@ -70,15 +73,17 @@ export default class RobustPolynomialRegression extends BaseRegression {
           str = maybeToPrecision(this.coefficients[k], precision);
         } else {
           if (this.powers[k] === 1) {
-            str = `${maybeToPrecision(this.coefficients[k], precision) + times}x`;
+            str = `${maybeToPrecision(this.coefficients[k], precision) +
+              times}x`;
           } else {
-            str = `${maybeToPrecision(this.coefficients[k], precision) + times}x${sup}${this.powers[k]}${closeSup}`;
+            str = `${maybeToPrecision(this.coefficients[k], precision) +
+              times}x${sup}${this.powers[k]}${closeSup}`;
           }
         }
 
-        if (this.coefficients[k] > 0 && k !== (this.coefficients.length - 1)) {
+        if (this.coefficients[k] > 0 && k !== this.coefficients.length - 1) {
           str = ` + ${str}`;
-        } else if (k !== (this.coefficients.length - 1)) {
+        } else if (k !== this.coefficients.length - 1) {
           str = ` ${str}`;
         }
       }
@@ -100,7 +105,9 @@ export default class RobustPolynomialRegression extends BaseRegression {
 }
 
 function robustPolynomial(regression, x, y, degree) {
-  let powers = Array(degree).map((_, index) => index);
+  let powers = Array(degree)
+    .fill(0)
+    .map((_, index) => index);
 
   const tuples = getRandomTuples(x, y, degree);
 
@@ -146,10 +153,12 @@ function getRandomTuples(x, y, degree) {
     var counter = 0;
     while (counter < x.length) {
       if (!tuples[pos]) {
-        tuples[pos] = [{
-          x: x[i],
-          y: y[i]
-        }];
+        tuples[pos] = [
+          {
+            x: x[i],
+            y: y[i]
+          }
+        ];
         break;
       } else if (tuples[pos].length < degree) {
         tuples[pos].push({
@@ -203,5 +212,5 @@ function residualsMedian(residuals) {
 
   var l = residuals.length;
   var half = Math.floor(l / 2);
-  return (l % 2 === 0) ? residuals[half - 1] : residuals[half];
+  return l % 2 === 0 ? residuals[half - 1] : residuals[half];
 }

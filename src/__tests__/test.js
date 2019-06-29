@@ -32,7 +32,9 @@ describe('Robust Polynomial Regression', () => {
   });
 
   it('toJSON and load', () => {
-    expect(() => RobustPolynomialRegression.load({})).toThrow('not a RobustPolynomialRegression model');
+    expect(() => RobustPolynomialRegression.load({})).toThrow(
+      'not a RobustPolynomialRegression model'
+    );
 
     const regression = RobustPolynomialRegression.load({
       name: 'robustPolynomialRegression',
@@ -41,11 +43,11 @@ describe('Robust Polynomial Regression', () => {
       coefficients: [-1]
     });
 
-    expect(regression.predict(1)).toEqual(-1);
+    expect(regression.predict(1)).toStrictEqual(-1);
     expect(regression.toString(3)).toBe('f(x) = - 1.00 * x');
 
     const model = regression.toJSON();
-    expect(model).toEqual({
+    expect(model).toStrictEqual({
       name: 'robustPolynomialRegression',
       degree: 1,
       powers: [1],
