@@ -1,8 +1,8 @@
+import { solve } from 'ml-matrix';
 import BaseRegression, {
   checkArrayLength,
   maybeToPrecision
 } from 'ml-regression-base';
-import { solve } from 'ml-matrix';
 
 /**
  * @class RobustPolynomialRegression
@@ -111,13 +111,13 @@ function robustPolynomial(regression, x, y, degree) {
 
   const tuples = getRandomTuples(x, y, degree);
 
-  var min;
-  for (var i = 0; i < tuples.length; i++) {
-    var tuple = tuples[i];
-    var coefficients = calcCoefficients(tuple, powers);
+  let min;
+  for (let i = 0; i < tuples.length; i++) {
+    let tuple = tuples[i];
+    let coefficients = calcCoefficients(tuple, powers);
 
-    var residuals = x.slice();
-    for (var j = 0; j < x.length; j++) {
+    let residuals = x.slice();
+    for (let j = 0; j < x.length; j++) {
       residuals[j] = y[j] - predict(x[j], powers, coefficients);
       residuals[j] = {
         residual: residuals[j] * residuals[j],
@@ -125,7 +125,7 @@ function robustPolynomial(regression, x, y, degree) {
       };
     }
 
-    var median = residualsMedian(residuals);
+    let median = residualsMedian(residuals);
     if (!min || median.residual < min.residual) {
       min = median;
     }
@@ -144,13 +144,13 @@ function robustPolynomial(regression, x, y, degree) {
  * @return {Array<{x:number,y:number}>}
  */
 function getRandomTuples(x, y, degree) {
-  var len = Math.floor(x.length / degree);
-  var tuples = new Array(len);
+  let len = Math.floor(x.length / degree);
+  let tuples = new Array(len);
 
-  for (var i = 0; i < x.length; i++) {
-    var pos = Math.floor(Math.random() * len);
+  for (let i = 0; i < x.length; i++) {
+    let pos = Math.floor(Math.random() * len);
 
-    var counter = 0;
+    let counter = 0;
     while (counter < x.length) {
       if (!tuples[pos]) {
         tuples[pos] = [
@@ -186,12 +186,12 @@ function getRandomTuples(x, y, degree) {
  * @return {Array<number>}
  */
 function calcCoefficients(tuple, powers) {
-  var X = tuple.slice();
-  var Y = tuple.slice();
-  for (var i = 0; i < X.length; i++) {
+  let X = tuple.slice();
+  let Y = tuple.slice();
+  for (let i = 0; i < X.length; i++) {
     Y[i] = [tuple[i].y];
     X[i] = new Array(powers.length);
-    for (var j = 0; j < powers.length; j++) {
+    for (let j = 0; j < powers.length; j++) {
       X[i][j] = Math.pow(tuple[i].x, powers[j]);
     }
   }
@@ -210,7 +210,7 @@ function predict(x, powers, coefficients) {
 function residualsMedian(residuals) {
   residuals.sort((a, b) => a.residual - b.residual);
 
-  var l = residuals.length;
-  var half = Math.floor(l / 2);
+  let l = residuals.length;
+  let half = Math.floor(l / 2);
   return l % 2 === 0 ? residuals[half - 1] : residuals[half];
 }
