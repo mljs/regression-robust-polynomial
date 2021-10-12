@@ -1,8 +1,8 @@
-import { solve } from 'ml-matrix';
+import { solve } from "ml-matrix";
 import BaseRegression, {
   checkArrayLength,
-  maybeToPrecision
-} from 'ml-regression-base';
+  maybeToPrecision,
+} from "ml-regression-base";
 
 /**
  * @class RobustPolynomialRegression
@@ -25,10 +25,10 @@ export default class RobustPolynomialRegression extends BaseRegression {
 
   toJSON() {
     return {
-      name: 'robustPolynomialRegression',
+      name: "robustPolynomialRegression",
       degree: this.degree,
       powers: this.powers,
-      coefficients: this.coefficients
+      coefficients: this.coefficients,
     };
   }
 
@@ -55,29 +55,31 @@ export default class RobustPolynomialRegression extends BaseRegression {
   }
 
   _toFormula(precision, isLaTeX) {
-    let sup = '^';
-    let closeSup = '';
-    let times = ' * ';
+    let sup = "^";
+    let closeSup = "";
+    let times = " * ";
     if (isLaTeX) {
-      sup = '^{';
-      closeSup = '}';
-      times = '';
+      sup = "^{";
+      closeSup = "}";
+      times = "";
     }
 
-    let fn = '';
-    let str = '';
+    let fn = "";
+    let str = "";
     for (let k = 0; k < this.coefficients.length; k++) {
-      str = '';
+      str = "";
       if (this.coefficients[k] !== 0) {
         if (this.powers[k] === 0) {
           str = maybeToPrecision(this.coefficients[k], precision);
         } else {
           if (this.powers[k] === 1) {
-            str = `${maybeToPrecision(this.coefficients[k], precision) +
-              times}x`;
+            str = `${
+              maybeToPrecision(this.coefficients[k], precision) + times
+            }x`;
           } else {
-            str = `${maybeToPrecision(this.coefficients[k], precision) +
-              times}x${sup}${this.powers[k]}${closeSup}`;
+            str = `${
+              maybeToPrecision(this.coefficients[k], precision) + times
+            }x${sup}${this.powers[k]}${closeSup}`;
           }
         }
 
@@ -89,7 +91,7 @@ export default class RobustPolynomialRegression extends BaseRegression {
       }
       fn = str + fn;
     }
-    if (fn.charAt(0) === '+') {
+    if (fn.charAt(0) === "+") {
       fn = fn.slice(1);
     }
 
@@ -97,8 +99,8 @@ export default class RobustPolynomialRegression extends BaseRegression {
   }
 
   static load(json) {
-    if (json.name !== 'robustPolynomialRegression') {
-      throw new TypeError('not a RobustPolynomialRegression model');
+    if (json.name !== "robustPolynomialRegression") {
+      throw new TypeError("not a RobustPolynomialRegression model");
     }
     return new RobustPolynomialRegression(true, json);
   }
@@ -121,7 +123,7 @@ function robustPolynomial(regression, x, y, degree) {
       residuals[j] = y[j] - predict(x[j], powers, coefficients);
       residuals[j] = {
         residual: residuals[j] * residuals[j],
-        coefficients
+        coefficients,
       };
     }
 
@@ -156,14 +158,14 @@ function getRandomTuples(x, y, degree) {
         tuples[pos] = [
           {
             x: x[i],
-            y: y[i]
-          }
+            y: y[i],
+          },
         ];
         break;
       } else if (tuples[pos].length < degree) {
         tuples[pos].push({
           x: x[i],
-          y: y[i]
+          y: y[i],
         });
         break;
       } else {
