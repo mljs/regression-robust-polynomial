@@ -114,11 +114,9 @@ function robustPolynomial(regression, x, y, degree) {
   const tuples = getRandomTuples(x, y, degree);
 
   let min;
-  for (let i = 0; i < tuples.length; i++) {
-    let tuple = tuples[i];
-    let coefficients = calcCoefficients(tuple, powers);
-
-    let residuals = x.slice();
+  for (const tuple of tuples) {
+    const coefficients = calcCoefficients(tuple, powers);
+    const residuals = x.slice();
     for (let j = 0; j < x.length; j++) {
       residuals[j] = y[j] - predict(x[j], powers, coefficients);
       residuals[j] = {

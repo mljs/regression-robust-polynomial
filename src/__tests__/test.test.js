@@ -2,24 +2,24 @@ import RobustPolynomialRegression from "..";
 
 describe("Robust Polynomial Regression", () => {
   it("Simple squared function", () => {
-    let size = 31;
-    let x = new Array(size);
-    let y = new Array(size);
+    const size = 31;
+    const x = new Array(size);
+    const y = new Array(size);
     for (let i = 0; i < size; i++) {
       x[i] = i;
       y[i] = 2 * i * i + 4 * i + 5;
     }
 
-    let regression = new RobustPolynomialRegression(x, y, 3);
+    const regression = new RobustPolynomialRegression(x, y, 3);
     expect(regression.predict(3)).toBe(35);
     expect(regression.toString(3)).toBe("f(x) = 2.00 * x^2 + 4.00 * x + 5.00");
     expect(regression.toLaTeX(3)).toBe("f(x) = 2.00x^{2} + 4.00x + 5.00");
   });
 
   it("Squared function with outliers", () => {
-    let size = 30;
-    let x = new Array(size);
-    let y = new Array(size);
+    const size = 30;
+    const x = new Array(size);
+    const y = new Array(size);
     for (let i = 0; i < size; i++) {
       x[i] = i;
       y[i] = 2 * i * i + 4 * i + 5;
@@ -27,7 +27,7 @@ describe("Robust Polynomial Regression", () => {
     y[4] = y[4] * 100;
     y[10] = y[10] * -100;
 
-    let regression = new RobustPolynomialRegression(x, y, 3);
+    const regression = new RobustPolynomialRegression(x, y, 3);
     expect(regression.predict(3)).toBe(35);
   });
 
