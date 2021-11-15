@@ -9,9 +9,9 @@ import { robustPolynomial } from "./utilities/robustPolynomial";
 
 /**
  * @class RobustPolynomialRegression
- * @param {Array<number>} x
- * @param {Array<number>} y
- * @param {number} degree - polynomial degree
+ * @param x
+ * @param y
+ * @param degree - polynomial degree
  */
 export default class RobustPolynomialRegression extends BaseRegression {
   public name?: string;
@@ -52,8 +52,8 @@ export default class RobustPolynomialRegression extends BaseRegression {
 
   /**
    * Display the formula
-   * @param {number} precision - precision for the numbers
-   * @return {string}
+   * @param precision - precision for the numbers
+   * @return
    */
   public toString(precision: number) {
     return this._toFormula(precision, false);
@@ -61,8 +61,8 @@ export default class RobustPolynomialRegression extends BaseRegression {
 
   /**
    * Display the formula in LaTeX format
-   * @param {number} precision - precision for the numbers
-   * @return {string}
+   * @param precision - precision for the numbers
+   * @return
    */
   public toLaTeX(precision: number) {
     return this._toFormula(precision, true);
