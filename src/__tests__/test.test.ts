@@ -3,8 +3,8 @@ import RobustPolynomialRegression from "..";
 describe("Robust Polynomial Regression", () => {
   it("Simple squared function", () => {
     const size = 31;
-    const x = new Array(size);
-    const y = new Array(size);
+    const x: number[] = new Array(size);
+    const y: number[] = new Array(size);
     for (let i = 0; i < size; i++) {
       x[i] = i;
       y[i] = 2 * i * i + 4 * i + 5;
@@ -18,8 +18,8 @@ describe("Robust Polynomial Regression", () => {
 
   it("Squared function with outliers", () => {
     const size = 30;
-    const x = new Array(size);
-    const y = new Array(size);
+    const x: number[] = new Array(size);
+    const y: number[] = new Array(size);
     for (let i = 0; i < size; i++) {
       x[i] = i;
       y[i] = 2 * i * i + 4 * i + 5;
