@@ -51,6 +51,6 @@
   "dependencies": {
     "is-any-array": "^2.0.0",
     "ml-matrix": "^6.8.2",
-    "ml-regression-base": "^2.1.4"
+    "ml-regression-base": "^2.1.5"
   }
 }
