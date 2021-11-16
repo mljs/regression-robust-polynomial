@@ -18,11 +18,7 @@ export default class RobustPolynomialRegression extends BaseRegression {
   public degree?: number;
   public powers?: number[];
   public coefficients?: number[];
-  public constructor(
-    x: number[] | LoadJSON,
-    y?: number[],
-    degree?: number
-  ) {
+  public constructor(x: number[] | LoadJSON, y?: number[], degree?: number) {
     super();
     if (isAnyArray(x)) {
       checkArrayLength(x as number[], y as number[]);
