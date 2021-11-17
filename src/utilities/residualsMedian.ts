@@ -1,5 +1,5 @@
 export function residualsMedian(
-  residuals: { residual: number; coefficients: number[] }[]
+  residuals: { residual: number; coefficients: number[] }[],
 ) {
   residuals.sort((a, b) => a.residual - b.residual);
 

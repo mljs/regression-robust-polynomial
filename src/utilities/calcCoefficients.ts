@@ -1,4 +1,4 @@
-import { solve } from "ml-matrix";
+import { solve } from 'ml-matrix';
 
 /**
  * @ignore
@@ -8,7 +8,7 @@ import { solve } from "ml-matrix";
  */
 export function calcCoefficients(
   tuple: { x: number; y: number }[],
-  powers: number[]
+  powers: number[],
 ) {
   let X: number[][] = [];
   let Y: number[][] = [];

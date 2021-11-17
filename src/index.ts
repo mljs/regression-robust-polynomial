@@ -1,11 +1,11 @@
-import { isAnyArray } from "is-any-array";
+import { isAnyArray } from 'is-any-array';
 import BaseRegression, {
   checkArrayLength,
   maybeToPrecision,
-} from "ml-regression-base";
+} from 'ml-regression-base';
 
-import { predict } from "./utilities/predict";
-import { robustPolynomial } from "./utilities/robustPolynomial";
+import { predict } from './utilities/predict';
+import { robustPolynomial } from './utilities/robustPolynomial';
 
 /**
  * @class RobustPolynomialRegression
@@ -24,7 +24,7 @@ export default class RobustPolynomialRegression extends BaseRegression {
       checkArrayLength(x as number[], y as number[]);
       robustPolynomial(this, x as number[], y as number[], degree as number);
     } else {
-      const name = "robustPolynomialRegression";
+      const name = 'robustPolynomialRegression';
       const model = x as LoadJSON;
       this.degree = model.degree;
       this.powers = model.powers;
@@ -65,21 +65,21 @@ export default class RobustPolynomialRegression extends BaseRegression {
   }
 
   public _toFormula(precision: number, isLaTeX: boolean) {
-    let sup = "^";
-    let closeSup = "";
-    let times = " * ";
+    let sup = '^';
+    let closeSup = '';
+    let times = ' * ';
     if (isLaTeX) {
-      sup = "^{";
-      closeSup = "}";
-      times = "";
+      sup = '^{';
+      closeSup = '}';
+      times = '';
     }
 
-    let fn = "";
-    let str = "";
+    let fn = '';
+    let str = '';
     const coefficients = this.coefficients as number[];
     const powers = this.powers as number[];
     for (let k = 0; k < coefficients.length; k++) {
-      str = "";
+      str = '';
       if (coefficients[k] !== 0) {
         if (powers[k] === 0) {
           str = maybeToPrecision(coefficients[k], precision);
@@ -101,7 +101,7 @@ export default class RobustPolynomialRegression extends BaseRegression {
       }
       fn = str + fn;
     }
-    if (fn.startsWith("+")) {
+    if (fn.startsWith('+')) {
       fn = fn.slice(1);
     }
 
@@ -109,8 +109,8 @@ export default class RobustPolynomialRegression extends BaseRegression {
   }
 
   public static load(json: LoadJSON) {
-    if (json.name !== "robustPolynomialRegression") {
-      throw new TypeError("not a RobustPolynomialRegression model");
+    if (json.name !== 'robustPolynomialRegression') {
+      throw new TypeError('not a RobustPolynomialRegression model');
     }
     return new RobustPolynomialRegression(json, undefined, undefined);
   }

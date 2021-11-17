@@ -1,7 +1,7 @@
-import { calcCoefficients } from "./calcCoefficients";
-import { getRandomTuples } from "./getRandomTuples";
-import { predict } from "./predict";
-import { residualsMedian } from "./residualsMedian";
+import { calcCoefficients } from './calcCoefficients';
+import { getRandomTuples } from './getRandomTuples';
+import { predict } from './predict';
+import { residualsMedian } from './residualsMedian';
 
 export function robustPolynomial(
   regression: {
@@ -12,7 +12,7 @@ export function robustPolynomial(
   },
   x: number[],
   y: number[],
-  degree: number
+  degree: number,
 ) {
   let powers = Array(degree)
     .fill(0)
