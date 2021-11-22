@@ -1,4 +1,4 @@
-import RobustPolynomialRegression from '..';
+import { RobustPolynomialRegression } from '..';
 
 describe('Robust Polynomial Regression', () => {
   it('Simple squared function', () => {

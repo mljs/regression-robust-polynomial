@@ -16,7 +16,7 @@ This code is based on the implementation of [this paper](https://doi.org/10.1007
 ## Usage
 
 ```js
-import RobustPolynomialRegression from 'ml-regression-robust-polynomial';
+import { RobustPolynomialRegression } from 'ml-regression-robust-polynomial';
 
 var size = 30;
 var x = new Array(size);

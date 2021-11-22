@@ -13,7 +13,7 @@ import { robustPolynomial } from './utilities/robustPolynomial';
  * @param y
  * @param degree - polynomial degree
  */
-export default class RobustPolynomialRegression extends BaseRegression {
+export class RobustPolynomialRegression extends BaseRegression {
   public name?: string;
   public degree?: number;
   public powers?: number[];
