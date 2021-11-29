@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.0.0](https://www.github.com/mljs/regression-robust-polynomial/compare/v2.0.1...v3.0.0) (2021-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* export class as not default
+
+### Features
+
+* add .prettierrc.json file ([9112163](https://www.github.com/mljs/regression-robust-polynomial/commit/9112163ca76357b21a6c7e07505b489d21d81951))
+* export class as not default ([9112163](https://www.github.com/mljs/regression-robust-polynomial/commit/9112163ca76357b21a6c7e07505b489d21d81951))
+
 ### [2.0.1](https://github.com/mljs/regression-robust-polynomial/compare/v2.0.0...v2.0.1) (2021-10-12)
 
 # [2.0.0](https://github.com/mljs/regression-robust-polynomial/compare/v1.0.1...v2.0.0) (2019-06-29)
@@ -28,6 +40,3 @@
 ### Features
 
 * initial implementation ([#1](https://github.com/mljs/regression-robust-polynomial/issues/1)) ([ad52b06](https://github.com/mljs/regression-robust-polynomial/commit/ad52b06))
-
-
-
