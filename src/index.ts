@@ -21,11 +21,11 @@ export class RobustPolynomialRegression extends BaseRegression {
   public constructor(x: number[] | LoadJSON, y?: number[], degree?: number) {
     super();
     if (isAnyArray(x)) {
-      checkArrayLength(x as number[], y as number[]);
-      robustPolynomial(this, x as number[], y as number[], degree as number);
+      checkArrayLength(x , y as number[]);
+      robustPolynomial(this, x , y as number[], degree as number);
     } else {
       const name = 'robustPolynomialRegression';
-      const model = x as LoadJSON;
+      const model = x ;
       this.degree = model.degree;
       this.powers = model.powers;
       this.coefficients = model.coefficients;
