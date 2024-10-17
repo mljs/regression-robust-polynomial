@@ -3,11 +3,11 @@
  * @param x
  * @param y
  * @param degree
- * @return
+ * @returns
  */
 export function getRandomTuples(x: number[], y: number[], degree: number) {
-  let len = Math.floor(x.length / degree);
-  let tuples: { x: number; y: number }[][] = new Array(len);
+  const len = Math.floor(x.length / degree);
+  const tuples = new Array<Array<{ x: number; y: number }>>(len);
 
   for (let i = 0; i < x.length; i++) {
     let pos = Math.floor(Math.random() * len);

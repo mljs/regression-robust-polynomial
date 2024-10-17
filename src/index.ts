@@ -1,5 +1,6 @@
 import { isAnyArray } from 'is-any-array';
-import BaseRegression, {
+import {
+  BaseRegression,
   checkArrayLength,
   maybeToPrecision,
 } from 'ml-regression-base';
@@ -21,11 +22,11 @@ export class RobustPolynomialRegression extends BaseRegression {
   public constructor(x: number[] | LoadJSON, y?: number[], degree?: number) {
     super();
     if (isAnyArray(x)) {
-      checkArrayLength(x , y as number[]);
-      robustPolynomial(this, x , y as number[], degree as number);
+      checkArrayLength(x, y as number[]);
+      robustPolynomial(this, x, y as number[], degree as number);
     } else {
       const name = 'robustPolynomialRegression';
-      const model = x ;
+      const model = x;
       this.degree = model.degree;
       this.powers = model.powers;
       this.coefficients = model.coefficients;
@@ -49,7 +50,7 @@ export class RobustPolynomialRegression extends BaseRegression {
   /**
    * Display the formula
    * @param precision - precision for the numbers
-   * @return
+   * @returns
    */
   public toString(precision: number) {
     return this._toFormula(precision, false);
@@ -58,7 +59,7 @@ export class RobustPolynomialRegression extends BaseRegression {
   /**
    * Display the formula in LaTeX format
    * @param precision - precision for the numbers
-   * @return
+   * @returns
    */
   public toLaTeX(precision: number) {
     return this._toFormula(precision, true);
@@ -83,14 +84,12 @@ export class RobustPolynomialRegression extends BaseRegression {
       if (coefficients[k] !== 0) {
         if (powers[k] === 0) {
           str = maybeToPrecision(coefficients[k], precision);
+        } else if (powers[k] === 1) {
+          str = `${maybeToPrecision(coefficients[k], precision) + times}x`;
         } else {
-          if (powers[k] === 1) {
-            str = `${maybeToPrecision(coefficients[k], precision) + times}x`;
-          } else {
-            str = `${
-              maybeToPrecision(coefficients[k], precision) + times
-            }x${sup}${powers[k]}${closeSup}`;
-          }
+          str = `${
+            maybeToPrecision(coefficients[k], precision) + times
+          }x${sup}${powers[k]}${closeSup}`;
         }
 
         if (coefficients[k] > 0 && k !== coefficients.length - 1) {

@@ -14,9 +14,7 @@ export function robustPolynomial(
   y: number[],
   degree: number,
 ) {
-  let powers = Array(degree)
-    .fill(0)
-    .map((_, index) => index);
+  const powers = new Array(degree).fill(0).map((_, index) => index);
 
   const tuples = getRandomTuples(x, y, degree);
 
@@ -28,7 +26,7 @@ export function robustPolynomial(
     | undefined;
   for (const tuple of tuples) {
     const coefficients = calcCoefficients(tuple, powers);
-    const residuals: { residual: number; coefficients: number[] }[] = [];
+    const residuals: Array<{ residual: number; coefficients: number[] }> = [];
     for (let j = 0; j < x.length; j++) {
       const residual = y[j] - predict(x[j], powers, coefficients);
       residuals[j] = {
@@ -37,7 +35,7 @@ export function robustPolynomial(
       };
     }
 
-    let median = residualsMedian(residuals);
+    const median = residualsMedian(residuals);
     if (!min || median.residual < min.residual) {
       min = median;
     }
