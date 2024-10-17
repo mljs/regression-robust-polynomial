@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/mljs/regression-robust-polynomial/compare/v3.0.0...v3.0.1) (2024-10-17)
+
+
+### Bug Fixes
+
+* update dependencies ([60a8a48](https://github.com/mljs/regression-robust-polynomial/commit/60a8a48f00e3dfc616612ea23368e988a956f506))
+
 ## [3.0.0](https://www.github.com/mljs/regression-robust-polynomial/compare/v2.0.1...v3.0.0) (2021-11-29)
 
 
